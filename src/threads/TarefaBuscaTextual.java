@@ -1,3 +1,5 @@
+package threads;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -17,12 +19,16 @@ public class TarefaBuscaTextual implements Runnable {
     public void run() {
         try {
             Scanner scanner = new Scanner(new File(nomeArquivo));
+            int numeroLinha = 1;
+
             while (scanner.hasNextLine()){
                 String linha = scanner.nextLine();
 
-                if(linha.contains(nome)){
-                    
+                if(linha.toLowerCase().contains(nome.toLowerCase())){
+                    System.out.println(nomeArquivo + " - " + numeroLinha + " - " + linha);
+
                 }
+                numeroLinha++;
             }
 
             scanner.close();
